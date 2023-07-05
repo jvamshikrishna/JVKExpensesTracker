@@ -5,6 +5,10 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JVKExpensesTrackerServer.Functions", "JVKExpensesTrackerServer.Functions\JVKExpensesTrackerServer.Functions.csproj", "{9156769D-DFD2-44AC-80E8-2E2DE39F4EAC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{48E565C8-4AE2-4719-83FE-E372972ADF62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{B0DC0705-D237-491A-9879-DAD0D7DA16B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +22,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9156769D-DFD2-44AC-80E8-2E2DE39F4EAC} = {48E565C8-4AE2-4719-83FE-E372972ADF62}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B5D224E-2CE8-41DF-9E14-48493A754C70}
