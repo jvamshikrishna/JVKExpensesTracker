@@ -1,4 +1,7 @@
 
+Requirements:
+---------------------
+
 Microsoft Visual Studio 2022 for Windows: 
 https://visualstudio.microsoft.com/vs/community/
 
@@ -19,3 +22,35 @@ https://azure.microsoft.com/en-us/products/storage/storage-explorer/#overview
 
 Azure Storage Emulator and Azurite 
 https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio
+
+
+Step 1:
+--------
+Add new file Azure Fucntions, with name ListWallets
+in this file you see the function name and async tasks, this uses http trigger and can perform 
+get, post and also we have route where we can specify the route url
+
+the following are the input bindings
+
+for http triggers it is 
+[HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req)
+
+for timer trigger it is
+HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]
+
+for queue triggers it is
+[QueueTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] string message)
+
+you can also add output bindings
+[HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req [CosmosDb] out dynamix obj)
+and create an obj in the code like
+
+obj = new 
+{ id = Guid.NewGuid(), Name = "test"
+}
+
+We can have multiple output bindings but only single input bindings
+
+links to refer:
+https://learn.microsoft.com/en-us/azure/azure-functions/functions-host-json
+https://learn.microsoft.com/en-us/azure/azure-functions/
