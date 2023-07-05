@@ -1,0 +1,21 @@
+
+Microsoft Visual Studio 2022 for Windows: 
+https://visualstudio.microsoft.com/vs/community/
+
+Microsoft Visual Studio 2022 for MacOS (Preview): 
+https://visualstudio.microsoft.com/vs/mac/preview/
+
+Azure Cosmos Db Emulator for Windows: 
+https://learn.microsoft.com/en-us/azure/cosmos-db/local-emulator?tabs=ssl-netstd21
+
+Azure Cosmos Db Emulator as a Docker Image for Linux:
+https://learn.microsoft.com/en-us/azure/cosmos-db/docker-emulator-linux?tabs=sql-api%2Cssl-netstd21
+
+Azure Functions Core Tools v4.x
+https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cportal%2Cv2%2Cbash&pivots=programming-language-csharp#v2
+
+Azure Storage Explorer for Windows & macOS:
+https://azure.microsoft.com/en-us/products/storage/storage-explorer/#overview
+
+Azure Storage Emulator and Azurite 
+https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio
