@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Documentation.txt = Documentation.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JVKExpensesTracker.Shared", "JVKExpensesTracker.Shared\JVKExpensesTracker.Shared.csproj", "{3A14F68A-32D9-425C-A8A4-1CA06C9BE410}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JVKExpensesTracker.Server.Data", "JVKExpensesTracker.Server.Data\JVKExpensesTracker.Server.Data.csproj", "{A2D81B4F-5D31-46A6-B509-2871C0FC22FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,12 +28,21 @@ Global
 		{9156769D-DFD2-44AC-80E8-2E2DE39F4EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9156769D-DFD2-44AC-80E8-2E2DE39F4EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9156769D-DFD2-44AC-80E8-2E2DE39F4EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A14F68A-32D9-425C-A8A4-1CA06C9BE410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A14F68A-32D9-425C-A8A4-1CA06C9BE410}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A14F68A-32D9-425C-A8A4-1CA06C9BE410}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A14F68A-32D9-425C-A8A4-1CA06C9BE410}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2D81B4F-5D31-46A6-B509-2871C0FC22FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D81B4F-5D31-46A6-B509-2871C0FC22FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D81B4F-5D31-46A6-B509-2871C0FC22FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D81B4F-5D31-46A6-B509-2871C0FC22FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9156769D-DFD2-44AC-80E8-2E2DE39F4EAC} = {48E565C8-4AE2-4719-83FE-E372972ADF62}
+		{A2D81B4F-5D31-46A6-B509-2871C0FC22FD} = {48E565C8-4AE2-4719-83FE-E372972ADF62}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B5D224E-2CE8-41DF-9E14-48493A754C70}

@@ -54,3 +54,37 @@ We can have multiple output bindings but only single input bindings
 links to refer:
 https://learn.microsoft.com/en-us/azure/azure-functions/functions-host-json
 https://learn.microsoft.com/en-us/azure/azure-functions/
+
+
+
+In host.jsaon
+we add all the setting or configurations we need
+
+day 3:
+------------------------------------------------------------
+we create class library project "JVKExpensesTraker .Shared" to communicate between server and client
+
+we add 3 folder
+DTO, Respomses, Validators
+
+DTOs are used for transferring data between the server and client, 
+validators are used to validate the data being transferred, 
+and responses provide feedback and information from the server to the client. 
+These components together enhance the reliability, consistency, and maintainability 
+of the communication process in a class library.
+
+
+now we add reference to Server project
+open dependencies in server project  --> right click then add reference, select Class library project then OK
+
+ in Server folder create new project JVKExpensesTracker.Server.Data with class library
+ this is used for data layer and repositories
+ then add this project also to the project refernece in dependcies of  the Server.Functions project
+
+ Add 3 folders to the Server.Data project
+ Interfaces, Models , Repositories
+
+
+
+
+
