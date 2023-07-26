@@ -85,6 +85,168 @@ open dependencies in server project  --> right click then add reference, select 
  Interfaces, Models , Repositories
 
 
+ day 4:
+ --------------------------------------
+ open cosmos db emulator and in the explore create a new database with name ExpensesTrackerDb
+ and then new container with name Wallets, and partition key /userid
+ this parttition is used to distribute data sources and should be easily identifiable for the container name
+ eg: conatiner wallets has userid which will be unique
+
+
+
+ now we need to add Dependency injection to the azure function project
+ on the Server.Functions --> nuget packege 
+ --> Microsoft.Azure.Fucntions.Extensions
+ --> microsoft.extensions.dependencyInjection
+
+ we will add the startup.cs class to our Azure Functions project 
+ so we can have the ability to register our services 
+ using the dependency injection container supported in .NET 6.0.
+
+Setup Cosmos Db SDK and Register the Cosmos Client Instance in DI Container
+------------------------------------------------------------------------------
+NuGet Package
+Microsoft.Azure.Cosmos
+
+we need to inject azure cosmos db client in 
+microsoft recommends to inject that instance as a singleton
+
+so, we create a new class DependencyInjectionExtensions.cs
+we will create a cosmosdb service as sigleton and use across the whole application
+
+The IServiceCollection interface represents a container for registering and resolving services 
+that can be used throughout an application. It provides methods to register different types of 
+services, such as transient, scoped, and singleton services.
+
+
+namespace JVKExpensesTracker.Server.Data
+{
+    public static class DependencyInjectionExtensions
+    {
+        public static void AddCosmosDbClient(this IServiceCollection services, string connectionString)
+        {
+            services.AddSingleton(sp => new CosmosClient(connectionString));
+        }
+    }
+}
+
+over here cosmosdbclient is created and used across the whole aplications, for this we need Iservicecollection
+
+-------------------------------------------------------------
+day 5:
+in startup.cs
+
+we add cosmos service
+public override void Configure(IFunctionsHostBuilder builder)
+        {
+            var confi = builder.GetContext().Configuration;
+
+            builder.Services.AddCosmosDbClient("CosmosDbConnectionstring");
+        }
+
+we store all the required confirgutaion in Local.settings.json file
+we will load that file using var confi = builder.GetContext().Configuration;
+
+and call CosmosDbConnectionstring
+
+-------------------------------------------------------------
+day 6:
+
+we are going to execute our first query for the Azure Cosmos Db and retrieve the Wallets of a user.
+First, we will start by creating the Wallet model and then will create the interface and the
+repository of the Wallets for Cosmos Db, register the repository in the DI container of the Azure Functions app, and finally test the function and check the retrieved results. 
+
+right now there is no communication between so we create a model
+
+now we serialize the names as names in cosmos are camel case and in class are capitals
+so we use json serializer
+
+we add enum of wallet types and move it to new file
+
+we added a new extension for convienece extenrsion  name: ADD new file
+we can create new file by using shortcut Swift +F2
+
+create a new interface IWalletRepository
+
+internal interface IWalletRepository
+    {
+        Task<IEnumerable<Wallet>> ListByUserIdAsync(string userId); 
+    }
+
+The code snippet you provided is a method signature in C# programming language. Let's break it down:
+
+    Task: Task is a type representing an asynchronous operation that returns a result. In C#, 
+    it is part of the Task Parallel Library (TPL) and is used to perform asynchronous tasks without blocking the main thread.
+
+    IEnumerable<Wallet>: IEnumerable<T> is a generic interface in C# that represents a collection of objects of type T. 
+    In this case, the type T is Wallet, which means the method will return a collection of Wallet objects.
+
+    ListByUserIdAsync: This is the name of the method. The "Async" suffix suggests that this method is 
+    intended to be used for asynchronous operations.
+
+    (string userId): This is the input parameter of the method. It takes a string parameter named userId, 
+    which is likely used to filter the list of wallets based on a specific user.
+
+So, the purpose of this method is to asynchronously retrieve a collection of Wallet objects based on the provided userId. 
+The method returns a Task, indicating that the operation is asynchronous, and the result of the operation is an IEnumerable<Wallet>,
+which is a collection of Wallet objects.
+
+For conveinece we add a new globalusing.cs file 
+we will add all necessary using here for all file
+
+create a new repository 
+cosmosWalletrepository.cs
+then add it to the dependency injection
+
+ public static class DependencyInjectionExtensions
+    {
+        public static void AddCosmosDbClient(this IServiceCollection services, string connectionString)
+        {
+            services.AddSingleton(sp => new CosmosClient(connectionString));
+        }
+
+        public static void AddRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<IWalletRepository, CosmosWalletsRepository>();
+        }
+    }
+
+In the above program, two extension methods are defined for the IServiceCollection in the context of setting up a Cosmos DB
+client and repositories for dependency injection in an ASP.NET Core application.
+
+    AddSingleton:
+        services.AddSingleton(sp => new CosmosClient(connectionString));: 
+        This line of code adds a singleton instance of CosmosClient to the dependency injection container (IServiceCollection). 
+        The singleton lifetime means that there will be only one instance of CosmosClient throughout the lifetime of the 
+        application, and every time the CosmosClient is requested, the same instance will be provided. Singleton instances 
+        are created once, and subsequent requests will always receive the same instance.
+
+    AddScoped:
+        services.AddScoped<IWalletRepository, CosmosWalletsRepository>();: 
+        This line of code adds a scoped instance of CosmosWalletsRepository to the dependency injection container 
+        (IServiceCollection). The scoped lifetime means that a new instance of CosmosWalletsRepository will be created 
+        for each HTTP request coming into the application. During the processing of that request, any further requests
+        for the IWalletRepository will receive the same instance. However, different requests will receive different instances.
+
+In the provided code, two extension methods, AddCosmosDbClient and AddRepositories, 
+are being added to the dependency injection container (IServiceCollection).
+The main purpose of dependency injection is to decouple the components of an application, making them more modular,
+testable, and maintainable. By registering services in the dependency injection container,
+we allow the container to manage the creation, lifetime, and disposal of these services, 
+enabling easy access to them throughout the application.
+
+
+then we add this service to startup.cs
+
+
+
+
+
+
+
+
+
+
 
 
 

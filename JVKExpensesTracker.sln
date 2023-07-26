@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JVKExpensesTrackerServer.Functions", "JVKExpensesTrackerServer.Functions\JVKExpensesTrackerServer.Functions.csproj", "{9156769D-DFD2-44AC-80E8-2E2DE39F4EAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JVKExpensesTracker.Server.Functions", "JVKExpensesTrackerServer.Functions\JVKExpensesTracker.Server.Functions.csproj", "{9156769D-DFD2-44AC-80E8-2E2DE39F4EAC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{48E565C8-4AE2-4719-83FE-E372972ADF62}"
 EndProject
@@ -14,9 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Documentation.txt = Documentation.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JVKExpensesTracker.Shared", "JVKExpensesTracker.Shared\JVKExpensesTracker.Shared.csproj", "{3A14F68A-32D9-425C-A8A4-1CA06C9BE410}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JVKExpensesTracker.Shared", "JVKExpensesTracker.Shared\JVKExpensesTracker.Shared.csproj", "{3A14F68A-32D9-425C-A8A4-1CA06C9BE410}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JVKExpensesTracker.Server.Data", "JVKExpensesTracker.Server.Data\JVKExpensesTracker.Server.Data.csproj", "{A2D81B4F-5D31-46A6-B509-2871C0FC22FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JVKExpensesTracker.Server.Data", "JVKExpensesTracker.Server.Data\JVKExpensesTracker.Server.Data.csproj", "{A2D81B4F-5D31-46A6-B509-2871C0FC22FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
