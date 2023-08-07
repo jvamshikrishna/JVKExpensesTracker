@@ -62,7 +62,7 @@ we add all the setting or configurations we need
 
 day 3:
 ------------------------------------------------------------
-we create class library project "JVKExpensesTraker .Shared" to communicate between server and client
+we create class library project "JVKExpensesTraker.Shared" to communicate between server and client
 
 we add 3 folder
 DTO, Respomses, Validators
@@ -240,7 +240,16 @@ then we add this service to startup.cs
 
 
 
+-------------------------------------------------------------
+day 7:
 
+add the missing date properties of the wallet objects first, then will be creating the responses classes that will be used to wrap
+the responses of the API Functions, one for the successful result and other for the failure one. 
+
+add 2 new properties to cosmos db 1,creationdate, 2.modificationdate
+add them in models wallet.cs class as well
+
+we create a DTO for the client, it means to send thwe data what client exactly needs
 
 
 
