@@ -1,7 +1,10 @@
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using JVKExpensesTracker.Server.Data.Interfaces;
+using JVKExpensesTracker.Server.Data.Models;
+using JVKExpensesTracker.Shared.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -39,7 +42,7 @@ namespace JVKExpensesTrackerServer.Functions
 
             var wallets = await _walletsRepo.ListByUserIdAsync(userId);
 
-            return new OkObjectResult(wallets); // should return 200 for now
+            return new OkObjectResult(new ApiSuccessResponse<Wallet>($"{wallets.Count()} have been retrieved", wallets)); // should return 200 for now
         }
     }
 }

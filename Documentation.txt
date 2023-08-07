@@ -252,6 +252,86 @@ add them in models wallet.cs class as well
 we create a DTO for the client, it means to send thwe data what client exactly needs
 
 
+in the JVKEXpensesTracker.shared project, in the respones, will create a API response clas
+
+this class will have a Message., ResponseDate, records, which are list of something
+these records can be of any time, sometimes wallets, sometines transactions
+
+
+will create 2 methods that inherit the apireponse
+1. apisuccessresponse, 2.apierrorresponse
+
+apisuccessresponse has generic type of type T for the responses
+
+apisuccessresponse method will have constructores with based on parameters 
+    public ApiSuccessResponse()
+    {
+        IsSuccess = true;
+    }
+
+    public ApiSuccessResponse(T[]? records)
+    {
+        Records = records;
+    }
+
+    public ApiSuccessResponse(string message, T[]? records)
+    {
+        Message = message;
+        Records = records;
+    }
+
+    public ApiSuccessResponse(string message)
+    {
+        Message = message;
+    }
+
+same for apierrorResposne
+public class ApiErrorResponse : ApiResponse
+{
+    public ApiErrorResponse()
+    {
+        IsSuccess = false;
+    }
+
+    public ApiErrorResponse(string message)
+    {
+        Message = message;
+    }
+}
+The : this() syntax is used here. When the default constructor is invoked, 
+it automatically calls another constructor in the same class (ApiErrorResponse(string message) constructor) 
+using : this(). This ensures that the IsSuccess property is always set to false whenever an instance 
+of ApiErrorResponse is created.
+
+this will mnake sure the above constructor is also happend and issucess is et to default true or false basedon the method called
+
+
+move them to sepearte classes, by right click and move to their class option
+then we'll have 3 different classes 
+
+set repsonsedatetime which we forgot earlier
+
+we change the type from T<> generic to IEnumerable
+
+and change the final return from from wallet to 
+return new OkObjectResult(new ApiSuccessResponse<Wallet>($"{wallets.Count()} have been retrieved", wallets)); // should return 200 for now
+       
+now the response on postman chnegs from giving all records directly from cosmos to 
+their api calls, like repsonse date somes under one category and other message and issucess comes as other property with date
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
