@@ -8,12 +8,12 @@ public class ApiSuccessResponse<T> : ApiResponse
         ResponseDate = DateTime.UtcNow;
     }
 
-    public ApiSuccessResponse(IEnumerable<T>? records) : this()
+    public ApiSuccessResponse(T? records) : this()
     {
         Records = records;
     }
 
-    public ApiSuccessResponse(string message, IEnumerable<T>? records) : this()
+    public ApiSuccessResponse(string message, T? records) : this()
     {
         Message = message;
         Records = records;
@@ -24,5 +24,5 @@ public class ApiSuccessResponse<T> : ApiResponse
         Message = message;
     }
 
-    public IEnumerable<T>? Records { get; set; }
+    public T? Records { get; set; }
 }
