@@ -328,6 +328,25 @@ and deserialization of the JSON object for the Wallet model, will debug that and
 we change back the datatype to T, cause sometimes its not a collection, it migt be only omne,
 so we add Ieenumerable in the return Listwallets.cs as Ieneumerable<wallet>
 
+we create a dto class WalletDto in shared project, this willbe shared with client
+and enum folder with wallettypes
+
+DTO: is class or object only to transfer data from clinet to server or
+between layers of application, it contains 
+between layers of application, it contains data only that you want to use
+our application will have 2 dto
+1. wallet dto, where it will show ho wmany walltes does uers have
+2, walletsummary dto , which wil summary about the wallet.
+
+only these dtos will be shared with the client
+
+now, an issue arrived, the type of bank type is always showing others
+found that json serialization is being done by text.json.Serialization,
+where as cosmos uses newtonsoft.json for serilaztion, this is makes an issue fro not reading the names given
+
+in Newtonsoft.json we use JsonProperty instead of jsonPropertyName for serilazition
+
+
 
 
 
