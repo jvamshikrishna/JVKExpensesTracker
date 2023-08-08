@@ -320,8 +320,13 @@ now the response on postman chnegs from giving all records directly from cosmos 
 their api calls, like repsonse date somes under one category and other message and issucess comes as other property with date
 
 
+-------------------------------------------------------------
+day 8:
+create the DTOs of the Wallets and will figure it an error that happened in the JSON serialization
+and deserialization of the JSON object for the Wallet model, will debug that and get it resolved
 
-
+we change back the datatype to T, cause sometimes its not a collection, it migt be only omne,
+so we add Ieenumerable in the return Listwallets.cs as Ieneumerable<wallet>
 
 
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -42,7 +43,7 @@ namespace JVKExpensesTrackerServer.Functions
 
             var wallets = await _walletsRepo.ListByUserIdAsync(userId);
 
-            return new OkObjectResult(new ApiSuccessResponse<Wallet>($"{wallets.Count()} have been retrieved", wallets)); // should return 200 for now
+            return new OkObjectResult(new ApiSuccessResponse<IEnumerable<Wallet>>($"{wallets.Count()} have been retrieved", wallets)); // should return 200 for now
         }
     }
 }
