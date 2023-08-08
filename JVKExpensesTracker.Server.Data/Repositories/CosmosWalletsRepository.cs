@@ -29,20 +29,21 @@ public class CosmosWalletsRepository : IWalletsRepository
 
         var iterator = container.GetItemQueryIterator<Wallet>(query);
 
-        //var result = await iterator.ReadNextAsync();
+        var result = await iterator.ReadNextAsync();
+
+        return result.Resource;
+
+        //var result = new List<Wallet>();
+        //while (iterator.HasMoreResults)
+        //{
+        //    var response = await iterator.ReadNextAsync();
+        //    result.AddRange(response.ToList());
+        //}
 
 
-        var result = new List<Wallet>();
-        while (iterator.HasMoreResults)
-        {
-            var response = await iterator.ReadNextAsync();
-            result.AddRange(response.ToList());
-        }
 
+        ////var final_res = result.Resource;
 
-
-        //var final_res = result.Resource;
-
-        return result;
+        //return result;
     }
 }

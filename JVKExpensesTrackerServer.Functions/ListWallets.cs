@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using JVKExpensesTracker.Server.Data.Interfaces;
 using JVKExpensesTracker.Server.Data.Models;
+using JVKExpensesTracker.Shared.DTOs;
 using JVKExpensesTracker.Shared.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +44,16 @@ namespace JVKExpensesTrackerServer.Functions
 
             var wallets = await _walletsRepo.ListByUserIdAsync(userId);
 
-            return new OkObjectResult(new ApiSuccessResponse<IEnumerable<Wallet>>($"{wallets.Count()} have been retrieved", wallets)); // should return 200 for now
+            var result = wallets.Select(w => new WalletSummaryDto
+            {
+                Id = w.Id,
+                Name = w.Name,
+                Currency = w.Currency,
+                Balance = w.Balance,
+                Type = w.Type.Value,
+            });
+
+            return new OkObjectResult(new ApiSuccessResponse<IEnumerable<WalletSummaryDto>>($"{wallets.Count()} have been retrieved", result)); // should return 200 for now
         }
     }
 }
