@@ -14,6 +14,8 @@ public class CosmosWalletsRepository : IWalletsRepository
         _db = db;
     }
 
+    #region List
+
     public async Task<IEnumerable<Wallet>> ListByUserIdAsync(string userId)
     {
         if (string.IsNullOrWhiteSpace(userId))
@@ -24,7 +26,7 @@ public class CosmosWalletsRepository : IWalletsRepository
         var queryText = $"SELECT * FROM c WHERE c.userId = @userId";
         var query = new QueryDefinition(queryText).WithParameter("@userId", userId); // we use this to avoid sql injection
 
-        // we can't directly acces the list, it under db and then under container, so we fetch container first
+        // we can't directly acces the list, it is under db and then under container, so we fetch container first
         var container = _db.GetContainer(DATABASE_NAME, CONTAINER_NAME);
 
         var iterator = container.GetItemQueryIterator<Wallet>(query);
@@ -46,4 +48,36 @@ public class CosmosWalletsRepository : IWalletsRepository
 
         //return result;
     }
+
+    #endregion
+
+    #region Get By Id
+
+    public async Task<Wallet?> GetByIdAsync(string walletId, string userId)
+    {
+        if(string.IsNullOrWhiteSpace(walletId))
+        {
+            throw new ArgumentNullException(nameof(walletId));  
+        }
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            throw new ArgumentNullException(nameof(userId));
+        }
+        var queryText = $"SELECT * FROM c WHERE c.id = @id c.userId = @userId";
+        var query = new QueryDefinition(queryText)
+                                .WithParameter("@userId", userId)
+                                .WithParameter("@id",walletId); // we use this to avoid sql injection
+
+
+        var container = _db.GetContainer(DATABASE_NAME, CONTAINER_NAME);
+
+        var iterator = container.GetItemQueryIterator<Wallet>(query);
+        var result = await iterator.ReadNextAsync();
+
+        return result.Resource.FirstOrDefault();
+
+    }
+
+    #endregion
+
 }

@@ -92,6 +92,8 @@ open dependencies in server project  --> right click then add reference, select 
  this parttition is used to distribute data sources and should be easily identifiable for the container name
  eg: conatiner wallets has userid which will be unique
 
+ we genearte unique id my runing comand inpoweshell " new guid"
+
 
 
  now we need to add Dependency injection to the azure function project
@@ -347,12 +349,13 @@ where as cosmos uses newtonsoft.json for serilaztion, this is makes an issue fro
 in Newtonsoft.json we use JsonProperty instead of jsonPropertyName for serilazition
 
 
+-------------------------------------------------------------
+day 9:
 
 
+write in the function and the query to retrieve single wallet by its Id from our Azure Cosmos Db wallets container
 
-
-
-
+we create a new interface GetByIdAsync and create a function in the rpositories
 
 
 
