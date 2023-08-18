@@ -374,6 +374,13 @@ BadRequestResult --> returns directly 400 error
 
 
 
+---------------------------------------------------------------
+day 11:
+
+going to add a new method to the Wallets repostiroy that adds a wallet to our Azure Cosmos database.
+
+
+we will just create a new interface for the  adding new wallet and write the containerretirval code in cosmoswalletrepo
 
 
 

@@ -81,4 +81,18 @@ public class CosmosWalletsRepository : IWalletsRepository
 
     #endregion
 
+    #region create wallet
+
+    public async Task CreateAsync(Wallet wallet)
+    {
+        if (wallet == null)
+            throw new ArgumentNullException(nameof(wallet));
+
+        var container = _db.GetContainer(DATABASE_NAME, CONTAINER_NAME);
+
+        await container.CreateItemAsync(wallet);
+    }
+
+    #endregion
+
 }
