@@ -358,6 +358,20 @@ write in the function and the query to retrieve single wallet by its Id from our
 we create a new interface GetByIdAsync and create a function in the rpositories
 
 
+---------------------------------------------------------------
+day 10:
+
+we will create the Azure Function that is triggered by HTTP Request to retrieve the details of the wallet using its Id
+
+create a new azure function with http trigger open api and security as ananynomous 
+
+after the functionis created, inject IWalletsRepository, and add it as a paarameter to the function
+
+we are returning BadRequestObjectResult isntead of BadRequestResult
+
+BadRequestObjectResult --> return with message
+BadRequestResult --> returns directly 400 error
+
 
 
 
