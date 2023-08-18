@@ -2,6 +2,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using JVKExpensesTracker.Server.Data.Interfaces;
+using JVKExpensesTracker.Shared.DTOs;
 using JVKExpensesTracker.Shared.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -41,12 +42,38 @@ namespace JVKExpensesTracker.Server.Functions
 
             if (string.IsNullOrWhiteSpace(walletId))
             {
-                return new BadRequestObjectResult(new ApiErrorResponse("wallet id is required"));
+                return new BadRequestObjectResult(new ApiErrorResponse("wallet Id is required"));
             }
 
-            
+            var wallet = await _walletsRepo.GetByIdAsync(walletId, userId);
+            if (wallet == null)
+            {
+                return new NotFoundResult(); //retrive 404 response code
+            }
 
-            return new OkResult();
+            else
+            {
+                return new OkObjectResult(new WalletDto
+                {
+                    Id = wallet.Id,
+                    Name = wallet.Name,
+                    AccountType = wallet.AccountType,
+                    Balance = wallet.Balance,
+                    Currency = wallet.Currency,
+                    BankName = wallet.BankName,
+                    CreationDate = wallet.CreationDate,
+                    Iban = wallet.Iban,
+                    Swift = wallet.Swift,
+                    Type = wallet.Type.Value,
+                    Username = wallet.Username,
+
+                });
+
+
+                //return new OkObjectResult(wallet); // response 200
+            }
+
+            //return new OkResult();
         }
     }
 }

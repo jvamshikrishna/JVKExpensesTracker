@@ -367,7 +367,10 @@ create a new azure function with http trigger open api and security as ananynomo
 
 after the functionis created, inject IWalletsRepository, and add it as a paarameter to the function
 
+we are returning BadRequestObjectResult isntead of BadRequestResult
 
+BadRequestObjectResult --> return with message
+BadRequestResult --> returns directly 400 error
 
 
 

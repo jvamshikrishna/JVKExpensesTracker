@@ -63,10 +63,11 @@ public class CosmosWalletsRepository : IWalletsRepository
         {
             throw new ArgumentNullException(nameof(userId));
         }
-        var queryText = $"SELECT * FROM c WHERE c.id = @id c.userId = @userId";
+        var queryText = $"SELECT * FROM c WHERE c.id = @id AND c.userId = @userId";
         var query = new QueryDefinition(queryText)
-                                .WithParameter("@userId", userId)
-                                .WithParameter("@id",walletId); // we use this to avoid sql injection
+                                .WithParameter("@id", walletId)
+                                .WithParameter("@userId", userId); // we use this to avoid sql injection
+
 
 
         var container = _db.GetContainer(DATABASE_NAME, CONTAINER_NAME);
