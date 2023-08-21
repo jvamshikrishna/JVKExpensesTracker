@@ -382,6 +382,11 @@ going to add a new method to the Wallets repostiroy that adds a wallet to our Az
 
 we will just create a new interface for the  adding new wallet and write the containerretirval code in cosmoswalletrepo
 
+-----------------------------------------------------------------
+day 12:
+
+oing to add a new method to the Wallets repository that updates an existing wallet in our Azure Cosmos database.
+
 
 
 
