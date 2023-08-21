@@ -95,4 +95,18 @@ public class CosmosWalletsRepository : IWalletsRepository
 
     #endregion
 
+    #region update wallet
+
+    public async Task UpdateAsync(Wallet wallet)
+    {
+        if (wallet == null)
+            throw new ArgumentNullException(nameof(wallet));
+
+        var container = _db.GetContainer(DATABASE_NAME, CONTAINER_NAME);
+
+        await container.ReplaceItemAsync(wallet, wallet.Id);
+    }
+
+    #endregion
+
 }
