@@ -387,8 +387,31 @@ day 12:
 
 oing to add a new method to the Wallets repository that updates an existing wallet in our Azure Cosmos database.
 
+--------------------------------------------------------------------
+
+day 13:
+ going to install and use #FluentValidation and create our first validator in the system and then register
+ it in the dependency injection container of the #Azure #Functions project
+
+ we create a walletdtovalidator class in validator folder in tracker.shared project
+
+ we create a constructor and for the method where we mention rules for the validation
 
 
+ over here, now we add dependency injection to Shared project
+
+ in breif,
+ the function project, when startup.cs  hits, it gets DI from data project regarding 
+ cosmosdb and reopositories, 
+ same way now, this get DI validators.
+ 
+ so we create dependencyextension.cs and add
+    public static void AddValidators(this IServiceCollection services)
+    {
+        services.AddValidatorsFromAssemblyContaining<WalletDtoValidator>();
+    }
+
+we inject this addvalidator in builder.services in startup.cs
 
 
 
